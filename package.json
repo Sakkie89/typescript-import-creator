@@ -1,22 +1,43 @@
 {
   "name": "typescsript-import-creator",
-  "version": "1.0.0",
+  "version": "1.0.6",
   "description": "This package creates a typescript file with all files imported from a specific directory",
   "main": "index.js",
   "scripts": {
-    "test": "runtest"
+    "bin": "tsc -t ES6 --moduleResolution node ./bin/typescript-import.ts --outFile ./bin/typescript-import",
+    "build:typescript": "tsc -t ES6 --module commonjs --moduleResolution node index.ts && npm run bin",
+    "link": "npm run build:typescript && npm link --force",
+    "build": "npm run build:typescript",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "typescriptimport": "./bin/typescript-import"
+  },
+  "engines": {
+    "node": ">=6"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Sakkie89/typescript-import-creator.git"
   },
   "keywords": [
-    "typescirpt"
+    "typescirpt-import"
   ],
   "author": "Sakkie van Zyl",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Sakkie89/typescript-import-creator/issues"
   },
-  "homepage": "https://github.com/Sakkie89/typescript-import-creator#readme"
+  "homepage": "https://github.com/Sakkie89/typescript-import-creator#readme",
+  "dependencies": {
+    "commander": "^5.0.0",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "@types/commander": "^2.12.2",
+    "@types/core-js": "^2.5.3",
+    "@types/node": "^13.11.1",
+    "core-js": "^3.6.5",
+    "typescript": "~3.7.5"
+  }
 }
